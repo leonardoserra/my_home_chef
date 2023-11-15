@@ -23,5 +23,9 @@ Idea:
   
 - ci sarà una home_page dove verranno mostrate in ordine cronologico le RECIPE che ogni USER seguito pubblica assieme alle nostre.  
 - se uno USER non segue ancora nessuno nella home_page verranno suggeriti 5 USER o RECEIPTS random in modo da avviare il motore del follow  
+  
+  
+***DATABASE***
+![er_diagram](./MyHomeChefER.png)
 
 
