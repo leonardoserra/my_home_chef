@@ -1,5 +1,7 @@
 MyHomeChef Project
 
+Creato con Laravel/Inertia.js/Vue3
+
 ***Per accedere all'app bisogna essere registrati obbligatoriamente***  
 Idea:  
     
