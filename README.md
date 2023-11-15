@@ -23,14 +23,14 @@ Idea:
 - se uno CHEF non segue ancora nessuno nella home_page verranno suggeriti 5 CHEF o RECEIPTS random in modo da avviare il motore del follow  
   
 Entità:  
-ADMIN: Un utente registrato speciale che può monitorare qualsiasi contenuto e ha accesso a tutte le crud o opzioni:  
+ - ADMIN: Un utente registrato speciale che può monitorare qualsiasi contenuto e ha accesso a tutte le crud o opzioni:  
 	Properties:  
 	> -Id  
 	> -Nome  
 	> -Email  
 	> -Password  
   
-CHEF: L'utente registrato  
+ - USER: Lo chef utente registrato  
 	Properties:  
 	> -Id  
 	> -Nome  
@@ -45,7 +45,7 @@ CHEF: L'utente registrato
 	> -Favourite_chefs 1 to n con Recipe chef_id  
 	  
   
-RECIPE: la ricetta dello CHEF  
+- RECIPE: la ricetta dello CHEF  
 	Properties:  
 	> -Id  
 	> -Name  
@@ -59,12 +59,12 @@ RECIPE: la ricetta dello CHEF
 	> -Meal Type  
 	> -Cuisine  
   
-DIFFICULTY: difficoltà ricetta  
+- DIFFICULTY: difficoltà ricetta  
 	Properties:  
 	> -Id  
 	> -Name  
   
-STEP: il passaggio della ricetta  
+- STEP: il passaggio della ricetta  
 	Properties:  
 	> -Id    
 	> -Recipe_id  
@@ -72,7 +72,7 @@ STEP: il passaggio della ricetta
 	> -Description  
 	> -Action_type  
   
-INGREDIENTS: gli ingredienti per ogni Recipe  
+- INGREDIENTS: gli ingredienti per ogni Recipe  
 	Properties:  
 	> -Id  
 	> -Nome  
