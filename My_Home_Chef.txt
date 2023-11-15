@@ -1,4 +1,4 @@
-MyHomeChef(nome da cambiare) Project
+MyHomeChef Project
 
 Idea:
 Un app che permette di 

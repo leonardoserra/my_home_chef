@@ -1,66 +1,83 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+MyHomeChef Project
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+- ***Per accedere all'app bisogna essere registrati obbligatoriamente***
+Idea:
+ 
 
-## About Laravel
+- Un app che permette allo CHEF (utente registrato) di pubblicare RECIPES (ricette) pubbliche o private, nella sua chef_page. Le RECIPE avranno un nome, un livello di difficoltà, la durata per eseguirle, la lista di INGREDIENTS necessari e i recipe_points (punteggio della ricetta)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-Gli CHEF (utenti registrati) possono seguire altri CHEF e mettere + alle loro ricette pubbliche che aumenteranno i loro cooking_points (somma di tutti i recipe_points). Gli CHEF che premono + su una RECIPE la inseriscono nella sezione suggested_recipes di ogni CHEF
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-Gli CHEF hanno i Badge (gradi: principiante, appassionato, aiuto cuoco, chef, chef stellato, nonna) in base ai cooking_points
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-le RECIPES hanno un MEAL_TYPE opzionale (tipo di pietanza: primo, secondo, dessert, antipasto ecc) e hanno la CUISINE opzionale (tipo di cucina: esotica, italiana, cinese, giapponese, americana, balcana, creativa ecc)
 
-## Learning Laravel
+-ogni RECIPE ha il Nome, Descrizione, Tempo, DIFFICULTY, i Recipe_points(punteggio della ricetta, ogni volta che viene messo un +), gli INGREDIENTS (ingredienti della ricetta), gli STEPS (passaggi) con ordine modificabile, la Visibilità
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-ci sara una lista di DIFFICULTY da poter assegnare alla RECIPE
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-Ogni STEP ha il suo Step_number(per ordinarli), una o piu ACTIONS opzionale(azioni: cuoci, taglia, mescola, raffredda, congela ecc) e la descrizione dello STEP
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-Gli INGREDIENTS (ingredienti della ricetta) che hanno il nome e appartengono a una CATEGORY opzionale (categoria di ingrediente: carne, verdura, pesce, panificati, bevanda, spezia, frutta ecc) nella recipe_page ce la sezione timeline(scaletta)
+composta da STEPS(passaggi con ordine modificabile) a cui potranno essere associate una o piu ACTION_TYPE (azioni: cuoci, taglia, mescola, raffredda, congela ecc) con la descrizione di cosa fare 
 
-## Laravel Sponsors
+-ci sarà una home_page dove verranno mostrate in ordine cronologico le ricette che ogni CHEF seguito pubblica assieme alle nostre.
+-se uno CHEF non segue ancora nessuno nella home_page verranno suggeriti 5 CHEF o RECEIPTS random in modo da avviare il motore del follow
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Entità:
+ADMIN: Un utente registrato speciale che può monitorare qualsiasi contenuto e ha accesso a tutte le crud o opzioni:
+	Properties:
+	-Id
+	-Nome
+	-Email
+	-Password
 
-### Premium Partners
+CHEF: L'utente registrato
+	Properties:
+	-Id
+	-Nome
+	-Email
+	-Password
+	-Descrizione
+	-Profile_picture_path
+	-Visibilità
+	-Badge
+	-Cooking Points
+	-Favourite_recipes n to n con Recipe
+	-Favourite_chefs 1 to n con Recipe chef_id
+	
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+RECIPE: la ricetta dello CHEF
+	Properties:
+	-Id
+	-Name
+	-Descrizione
+	-img_path
+	-duration
+	-Recipe_points
+	-difficulty
+	-Chef_id
+	-Ingredients
+	-Meal Type
+	-Cuisine
 
-## Contributing
+DIFFICULTY: difficoltà ricetta
+	Properties:
+	-Id
+	-Name
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+STEP: il passaggio della ricetta
+	Properties:
+	-Id
+	-Recipe_id
+	-Position
+	-Description
+	-Action_type
 
-## Code of Conduct
+INGREDIENTS: gli ingredienti per ogni Recipe
+	Properties:
+	-Id
+	-Nome
+	-Category
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
