@@ -1,6 +1,6 @@
 MyHomeChef Project
 
-***Per accedere all'app bisogna essere registrati obbligatoriamente***
+***Per accedere all'app bisogna essere registrati obbligatoriamente***  
 Idea:  
     
 - Un app che permette allo CHEF (utente registrato) di pubblicare RECIPES (ricette) pubbliche o private, nella sua chef_page. Le RECIPE avranno un nome, un livello di difficoltà, la durata per eseguirle, la lista di INGREDIENTS necessari e i recipe_points (punteggio della ricetta)  
