@@ -21,6 +21,7 @@ class Recipe extends Model
         'user_id',
         'difficulty_id',
         'meal_type_id',
+        'cuisine_id',
     ];
     
     public function ingredients():HasMany{
@@ -39,9 +40,12 @@ class Recipe extends Model
         return $this->hasOne(Difficulty::class,'difficulty_id');
     }
 
-    public function mealType(){
+    public function mealType():HasOne{
         return $this->hasOne(MealType::class, 'meal_type_id');
     }
 
+    public function cuisine():HasOne{
+        return $this->hasOne(Cuisine::class, 'cuisine_id');
+    }
 
 }

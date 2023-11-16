@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('recipes', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->required()->after('recipe_points');
-            
-            $table->foreign('user_id')
+            $table->unsignedBigInteger('cuisine_id')->nullable()->after('meal_type_id');
+
+            $table->foreign('cuisine_id')
             ->references('id')
-            ->on('users')->onDelete('cascade');
+            ->on('cuisines')->onDelete('SET NULL');
         });
     }
 
@@ -26,8 +26,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('recipes', function (Blueprint $table) {
-            $table->dropForeign('recipes_user_id_foreign');
-            $table->dropColumn('user_id');
+            $table->dropForeign('recipes_cuisine_id_foreign');
+            $table->dropColumn('cuisine_id');
         });
     }
 };

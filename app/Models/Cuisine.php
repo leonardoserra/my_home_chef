@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Cuisine extends Model
 {
@@ -12,4 +13,8 @@ class Cuisine extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function recipes():BelongsToMany{
+        return $this->belongsToMany(Recipe::class);
+    }
 }
