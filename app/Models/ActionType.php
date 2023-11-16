@@ -12,4 +12,8 @@ class ActionType extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function steps(){
+        return $this->belongsToMany(Step::class);
+    }
 }
