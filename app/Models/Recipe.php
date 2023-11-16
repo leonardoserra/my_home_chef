@@ -20,6 +20,7 @@ class Recipe extends Model
         'recipe_points',
         'user_id',
         'difficulty_id',
+        'meal_type_id',
     ];
     
     public function ingredients():HasMany{
@@ -36,6 +37,10 @@ class Recipe extends Model
 
     public function difficulty():HasOne{
         return $this->hasOne(Difficulty::class,'difficulty_id');
+    }
+
+    public function mealType(){
+        return $this->hasOne(MealType::class, 'meal_type_id');
     }
 
 
