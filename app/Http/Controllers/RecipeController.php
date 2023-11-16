@@ -2,16 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cuisine;
+use App\Models\Difficulty;
+use App\Models\MealType;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class RecipeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index():Response
     {
-        //
+        return Inertia::render('Recipes/Index',[
+            'difficulties' => Difficulty::all(),
+            'mealTypes' => MealType::all(),
+            'cuisines' => Cuisine::all(),
+        ]);
     }
 
     /**

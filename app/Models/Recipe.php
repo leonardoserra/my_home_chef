@@ -25,6 +25,7 @@ class Recipe extends Model
         'cuisine_id',
     ];
     
+    //relations
     public function ingredients():HasMany{
        return $this->hasMany(Ingredient::class);
     }
