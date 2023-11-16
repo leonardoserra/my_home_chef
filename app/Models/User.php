@@ -23,8 +23,13 @@ class User extends Authenticatable
         'password',
         'description',
         'profile_picture_path',
-        'visibility'
+        'visibility',
+        'badge_id',
     ];
+
+    public function badges(){
+        $this->belongsTo(Badge::class, 'badge_id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

@@ -10,6 +10,12 @@ class Badge extends Model
     use HasFactory;
 
     protected $fillable  = [
-        'name,'
+        'name',
     ];
+
+    public function users() {
+        $this->hasMany(User::class);
+    }
+
+    
 }
