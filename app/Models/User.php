@@ -29,13 +29,6 @@ class User extends Authenticatable
         'badge_id',
     ];
 
-    public function badge():BelongsTo{
-        return $this->belongsTo(Badge::class, 'badge_id');
-    }
-
-    public function recipes():HasMany{
-        return $this->hasMany(Recipe::class);
-    }
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -45,7 +38,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    
     /**
      * The attributes that should be cast.
      *
@@ -55,4 +48,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //relations
+
+    public function badge():BelongsTo{
+        return $this->belongsTo(Badge::class, 'badge_id');
+    }
+    
+    public function recipes():HasMany{
+        return $this->hasMany(Recipe::class);
+    }
+
+    public function recipesLoved(){
+        $this->belongsToMany(Recipe::class);
+    } 
 }

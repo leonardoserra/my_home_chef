@@ -48,4 +48,8 @@ class Recipe extends Model
         return $this->hasOne(Cuisine::class, 'cuisine_id');
     }
 
+    public function usersLovingIt(){
+        return $this->belongsToMany(User::class);
+    }
+
 }
