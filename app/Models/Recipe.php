@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Recipe extends Model
 {
@@ -18,6 +19,7 @@ class Recipe extends Model
         'duration',
         'recipe_points',
         'user_id',
+        'difficulty_id',
     ];
     
     public function ingredients():HasMany{
@@ -30,6 +32,10 @@ class Recipe extends Model
 
     public function user():BelongsTo{
         return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function difficulty():HasOne{
+        return $this->hasOne(Difficulty::class,'difficulty_id');
     }
 
 
