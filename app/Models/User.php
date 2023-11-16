@@ -27,8 +27,8 @@ class User extends Authenticatable
         'badge_id',
     ];
 
-    public function badges(){
-        $this->belongsTo(Badge::class, 'badge_id');
+    public function badge(){
+        return $this->belongsTo(Badge::class, 'badge_id');
     }
 
     /**
