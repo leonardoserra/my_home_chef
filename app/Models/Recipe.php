@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -48,8 +49,8 @@ class Recipe extends Model
         return $this->hasOne(Cuisine::class, 'cuisine_id');
     }
 
-    public function usersLovingIt(){
-        return $this->belongsToMany(User::class);
+    public function usersLovingIt():BelongsToMany{
+        return $this->belongsToMany(User::class,'user_favourite_recipe','user_id', 'favourite_recipe_id');
     }
 
 }
