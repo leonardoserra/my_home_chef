@@ -14,15 +14,6 @@ use Inertia\Response;
 
 class ProfileController extends Controller
 {
-
-    public function index(): Response
-    {
-        $user_id = Auth::user()->id;
-        $user = User::where('id', $user_id)->get();
-        return Inertia::render('Dashboard', [
-            'user'=> ['name'=>"paolo"],
-        ]);
-    }
     /**
      * Display the user's profile form.
      */

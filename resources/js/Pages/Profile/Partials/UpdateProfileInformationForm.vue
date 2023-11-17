@@ -18,6 +18,7 @@ const user = usePage().props.auth.user;
 
 const form = useForm({
     name: user.name,
+    description: user.description,
     email: user.email,
 });
 </script>
@@ -25,10 +26,10 @@ const form = useForm({
 <template>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Profile Information</h2>
+            <h2 class="text-lg font-medium text-gray-900">Informazioni</h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                Update your account's profile information and email address.
+                Modifica Profilo e Email
             </p>
         </header>
 
@@ -48,6 +49,21 @@ const form = useForm({
 
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
+            <div>
+                <InputLabel for="description" value="Descrizione" />
+
+                <TextInput
+                    id="description"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.description"
+                    required
+                    autofocus
+                    autocomplete="name"
+                />
+
+                <InputError class="mt-2" :message="form.errors.description" />
+            </div>
 
             <div>
                 <InputLabel for="email" value="Email" />
@@ -66,14 +82,14 @@ const form = useForm({
 
             <div v-if="mustVerifyEmail && user.email_verified_at === null">
                 <p class="text-sm mt-2 text-gray-800">
-                    Your email address is unverified.
+                    La tua email non è ancora stata verificata.
                     <Link
                         :href="route('verification.send')"
                         method="post"
                         as="button"
                         class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                        Click here to re-send the verification email.
+                        Clicca qui per re-inviare la mail di conferma.
                     </Link>
                 </p>
 
@@ -81,12 +97,12 @@ const form = useForm({
                     v-show="status === 'verification-link-sent'"
                     class="mt-2 font-medium text-sm text-green-600"
                 >
-                    A new verification link has been sent to your email address.
+                    Un nuovo link di conferma è stato mandato alla tua email.
                 </div>
             </div>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
+                <PrimaryButton :disabled="form.processing">Salva</PrimaryButton>
 
                 <Transition
                     enter-active-class="transition ease-in-out"
@@ -94,7 +110,7 @@ const form = useForm({
                     leave-active-class="transition ease-in-out"
                     leave-to-class="opacity-0"
                 >
-                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>
+                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Salvato.</p>
                 </Transition>
             </div>
         </form>

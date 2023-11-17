@@ -1,6 +1,12 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, usePage, Link } from '@inertiajs/vue3';
+import ProfileCard from '@/Components/ProfileCard.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+
+
+const user = usePage().props.auth.user;
+
 </script>
 
 <template>
@@ -8,13 +14,20 @@ import { Head } from '@inertiajs/vue3';
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Profilo Cuoco</h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">You're logged in!</div>
+                <div class="bg-white flex justify-center  overflow-hidden shadow-sm sm:rounded-lg">
+
+                    <Link  :href="route('profile.edit')" :active="route().current('dashboard')">
+                        <PrimaryButton class="mt-2" >MODIFICA</PrimaryButton>
+                    </Link>
+                    
+                    <ProfileCard ></ProfileCard>
+                    
+
                 </div>
             </div>
         </div>
