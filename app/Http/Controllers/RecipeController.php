@@ -50,7 +50,7 @@ class RecipeController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'description'=> 'string|max:255',
+            'description'=> 'string|max:100|nullable',
             'image_path'=> 'string|max:255|nullable',
             'duration'=> 'required|integer|numeric' ,
             'difficulty_id'=> 'integer|numeric|nullable',
@@ -58,10 +58,16 @@ class RecipeController extends Controller
             'cuisine_id'=> 'integer|numeric|nullable',
         ]);
 
+        //create new recipe and save it to the db after validation
         $user_id = Auth::user()->id;
         $newRecipe = new Recipe();
         $newRecipe->name = $validated['name'];
-        $newRecipe->description = $validated['description'];
+        // $newRecipe->description = $validated['description'];
+        if($validated['description'] == null){
+            $newRecipe->description = " ";
+        }else{
+            $newRecipe->description = $validated['description'];
+        }
         if($validated['image_path'] != null){
             $newRecipe->image_path = $validated['image_path'];
         }else{

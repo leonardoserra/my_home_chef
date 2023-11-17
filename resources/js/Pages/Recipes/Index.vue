@@ -58,9 +58,10 @@ defineProps([
     display: flex;
     justify-content: center;
     .container-card{
-         display: flex;
-         justify-content: start;
-         flex-wrap: wrap;
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
     }
 }
 </style>
