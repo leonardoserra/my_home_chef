@@ -19,7 +19,7 @@ defineProps([
 <template>
     <Head title="Ricette" />
     <AuthenticatedLayout>
-        <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
+        <div class="mx-auto p-4 sm:p-6 lg:p-8">
             <Link :href="route('recipes.create')" :active="route().current('recipes.create')">
                 <PrimaryButton class="mt-4 mb-3">
                     Aggiungi Ricetta
