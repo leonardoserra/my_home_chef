@@ -24,13 +24,13 @@
             Preparazione: {{ recipe.duration }} min
         </div>
         <div class="difficulty">
-            Difficoltà: {{ difficulty ? difficulty : 'nessuna cucina selezionata' }}
+            Difficoltà: {{ difficulty ? difficulty.name : 'nessuna cucina selezionata' }}
         </div>
         <div class="meal-type">
-            Tipo di piatto: {{ mealType ? mealType : 'nessuna cucina selezionata' }}
+            Tipo di piatto: {{ mealType ? mealType.name : 'nessuna cucina selezionata' }}
         </div>
         <div class="cuisine">
-            Cucina: {{ cuisine ? cuisine : 'nessuna cucina selezionata' }}
+            Cucina: {{ cuisine ? cuisine.name : 'nessuna cucina selezionata' }}
         </div>
     </div>
    
@@ -38,14 +38,14 @@
 <style scoped lang="scss">
     .recipe-card{
         width: calc(100% / 3 - 30px);
+        margin: 15px;
         padding: 15px;
         border: 1px solid black;
         border-radius: 15px;
         text-align: center;
             .image-wrapper{
                 width: 100%;
-                padding-left: calc(100%/2 - 25%);
-                padding-right: calc(100%/2 - 25%);
+                margin: auto;
                 .image{
                     width:100%;
                     border-radius: 10px;

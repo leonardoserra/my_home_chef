@@ -7,6 +7,7 @@ use App\Models\Difficulty;
 use App\Models\MealType;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -45,9 +46,36 @@ class RecipeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request):RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description'=> 'string|max:255',
+            'image_path'=> 'string|max:255|nullable',
+            'duration'=> 'required|integer|numeric' ,
+            'difficulty_id'=> 'integer|numeric|nullable',
+            'meal_type_id'=> 'integer|numeric|nullable',
+            'cuisine_id'=> 'integer|numeric|nullable',
+        ]);
+
+        $user_id = Auth::user()->id;
+        $newRecipe = new Recipe();
+        $newRecipe->name = $validated['name'];
+        $newRecipe->description = $validated['description'];
+        if($validated['image_path'] != null){
+            $newRecipe->image_path = $validated['image_path'];
+        }else{
+            $newRecipe->image_path = "/img/default_recipe.png";
+        }
+        $newRecipe->duration = $validated['duration'];
+        $newRecipe->difficulty_id = $validated['difficulty_id'];
+        $newRecipe->meal_type_id = $validated['meal_type_id'];
+        $newRecipe->cuisine_id = $validated['cuisine_id'];
+        $newRecipe->user_id = $user_id;
+        $newRecipe->save();
+
+        
+        return to_route('recipes.index');
     }
 
     /**

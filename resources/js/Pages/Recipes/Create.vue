@@ -16,9 +16,9 @@ const form = useForm({
     description: '',
     image_path: '',
     duration: null,
-    difficulty_id: '',
-    meal_type_id: '',
-    cuisine_id: '',
+    difficulty_id: null,
+    meal_type_id: null,
+    cuisine_id: null,
 });
 
 
@@ -60,7 +60,7 @@ const form = useForm({
 
                 <!-- Difficulties -->
                 <select v-model="form.difficulty_id" class="block w-60 mb-2  border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" >
-                    <option value="">Seleziona Difficoltà</option>
+                    <option  :value=null>Seleziona Difficoltà</option>
                     <template v-for="(difficulty,index) in difficulties" :key="index">
                         <option :value="difficulty.id">{{ difficulty.name }}</option>
                     </template>
@@ -68,7 +68,7 @@ const form = useForm({
 
                 <!-- Meal Types -->
                 <select v-model="form.meal_type_id" class="block w-60 mb-2  border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" >
-                    <option value="">Seleziona Tipo Di Pietanza</option>
+                    <option :value=null>Seleziona Tipo Di Pietanza</option>
                     <template v-for="(mealType,index) in mealTypes" :key="index">
                         <option :value="mealType.id">{{ mealType.name }}</option>
                     </template>
@@ -76,7 +76,7 @@ const form = useForm({
 
                 <!-- Cuisines -->
                 <select v-model="form.cuisine_id" class="block w-60 mb-2  border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" >
-                    <option value="">Seleziona Tipo di Cucina</option>
+                    <option :value=null>Seleziona Tipo di Cucina</option>
                     <template v-for="(cuisine,index) in cuisines" :key="index">
                         <option :value="cuisine.id">{{ cuisine.name }}</option>
                     </template>
