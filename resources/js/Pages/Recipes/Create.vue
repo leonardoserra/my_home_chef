@@ -5,7 +5,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm, Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
-//prova
+
     const errors = ref({
         name:'Nome obbligatorio',
         description: 'La descrizione supera i 100 caratteri, scrivi una breve descrizione',
