@@ -81,10 +81,6 @@ const form = useForm({
                         <option :value="cuisine.id">{{ cuisine.name }}</option>
                     </template>
                 </select>
-
-              
-
-
                 
                 <InputError :message="form.errors.message" class="mt-2" />
                 <PrimaryButton class="mt-4">Crea Ricetta</PrimaryButton>

@@ -7,6 +7,7 @@ use App\Models\Difficulty;
 use App\Models\MealType;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -17,8 +18,15 @@ class RecipeController extends Controller
      */
     public function index():Response
     {
+        $user_id = Auth::user()->id;
+        $recipes = Recipe::where('user_id', $user_id)->get();
+        
         return Inertia::render('Recipes/Index',[
-            'recipes' => Recipe::all(),
+            'recipes' => $recipes,
+            // 'recipes' => Recipe::all(),
+            'difficulties' => Difficulty::all(),
+            'mealTypes' => MealType::all(),
+            'cuisines' => Cuisine::all(),
         ]);
     }
 
