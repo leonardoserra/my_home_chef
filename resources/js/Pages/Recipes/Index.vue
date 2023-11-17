@@ -26,9 +26,9 @@ defineProps([
                 </PrimaryButton>
             </Link>
         </div>
-        <div class="index-body mx-auto p-4 sm:p-6 lg:p-8">
+        <div class="index-body mx-auto p-4 sm:p-6 lg:p-8   ">
             <!-- show all recipes -->
-            <div class="container-card">
+            <div class="container-card bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <template v-if="recipes">
                     <template v-for="(recipe, index) in recipes" :key="index">
                         <Card 

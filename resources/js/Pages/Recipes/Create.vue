@@ -19,9 +19,6 @@ const form = useForm({
     meal_type_id: null,
     cuisine_id: null,
 });
-
-
-
 </script>
  
 <template>
@@ -29,7 +26,7 @@ const form = useForm({
     <AuthenticatedLayout>
         <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
             
-            <form @submit.prevent="form.post(route('recipes.store'), { onSuccess: () => form.reset() })">
+            <form class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4" @submit.prevent="form.post(route('recipes.store'), { onSuccess: () => form.reset() })">
                 <InputError :message="form.errors.name" class="mt-2" />
                 <input 
                     type="text" 
@@ -60,11 +57,11 @@ const form = useForm({
                     min="0"
                     max="720"
                     placeholder="Durata Ricetta in Minuti"
-                    class="block w-60 mb-2 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                    class="inline-block w-64 mb-2 me-5 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                 >
                 <!-- Difficulties -->
                 <InputError :message="form.errors.difficulty_id" class="mt-2" />
-                <select v-model="form.difficulty_id" class="block w-60 mb-2  border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" >
+                <select v-model="form.difficulty_id" class="inline-block w-64 me-5 mb-2  border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" >
                     <option  :value=null>Seleziona Difficoltà</option>
                     <template v-for="(difficulty,index) in difficulties" :key="index">
                         <option :value="difficulty.id">{{ difficulty.name }}</option>
@@ -73,7 +70,7 @@ const form = useForm({
 
                 <!-- Meal Types -->
                 <InputError :message="form.errors.meal_type_id" class="mt-2" />
-                <select v-model="form.meal_type_id" class="block w-60 mb-2  border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" >
+                <select v-model="form.meal_type_id" class="inline-block w-64 me-5 mb-2  border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" >
                     <option :value=null>Seleziona Tipo Di Pietanza</option>
                     <template v-for="(mealType,index) in mealTypes" :key="index">
                         <option :value="mealType.id">{{ mealType.name }}</option>
@@ -82,14 +79,16 @@ const form = useForm({
 
                 <!-- Cuisines -->
                 <InputError :message="form.errors.cuisine_id" class="mt-2" />
-                <select v-model="form.cuisine_id" class="block w-60 mb-2  border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" >
+                <select v-model="form.cuisine_id" class="inline-block w-64 me-5 mb-2  border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" >
                     <option :value=null>Seleziona Tipo di Cucina</option>
                     <template v-for="(cuisine,index) in cuisines" :key="index">
                         <option :value="cuisine.id">{{ cuisine.name }}</option>
                     </template>
                 </select>
-                
-                <PrimaryButton class="mt-4">Crea Ricetta</PrimaryButton>
+                <div>
+
+                    <PrimaryButton class="mt-4 ">Crea Ricetta</PrimaryButton>
+                </div>
             </form>
         </div>
     </AuthenticatedLayout>
