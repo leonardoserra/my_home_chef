@@ -16,17 +16,17 @@ defineProps([
  
 <template>
     <Head title="Ricette" />
-    <AuthenticatedLayout>
-        <div class="action-container">
+    <AuthenticatedLayout class="relative">
+        <div class="fixed top-12 left-6 action-container">
             <Link  :href="route('recipes.create')" :active="route().current('recipes.create')">
                 <PrimaryButton class="mt-4 mb-3">
                     Aggiungi Ricetta
                 </PrimaryButton>
             </Link>
         </div>
-        <div class="index-body mx-auto p-4 sm:p-6 lg:p-8   ">
+        <div class="p-4 mx-auto index-body sm:p-6 lg:p-8 ">
             <!-- show all recipes -->
-            <div class="container-card bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="overflow-hidden bg-white shadow-sm container-card sm:rounded-lg">
                 <template v-if="recipes">
                     <template v-for="(recipe, index) in recipes" :key="index">
                         <Card 
