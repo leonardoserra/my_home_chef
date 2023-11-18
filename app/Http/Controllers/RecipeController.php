@@ -22,7 +22,7 @@ class RecipeController extends Controller
         $user_id = Auth::user()->id;
         $recipes = Recipe::where('user_id', $user_id)->get();
         
-        return Inertia::render('Recipes/Index',[
+        return Inertia::render('Recipe/Index',[
             'recipes' => $recipes,
             // 'recipes' => Recipe::all(),
             'difficulties' => Difficulty::all(),
@@ -36,7 +36,7 @@ class RecipeController extends Controller
      */
     public function create():Response
     {
-        return Inertia::render('Recipes/Create',[
+        return Inertia::render('Recipe/Create',[
             'difficulties' => Difficulty::all(),
             'mealTypes' => MealType::all(),
             'cuisines' => Cuisine::all(),
@@ -81,7 +81,7 @@ class RecipeController extends Controller
         $newRecipe->save();
 
         
-        return to_route('recipes.index');
+        return to_route('step.create');
     }
 
     /**

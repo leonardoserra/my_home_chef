@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Recipe;
 use App\Models\Step;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class StepController extends Controller
 {
@@ -18,9 +22,14 @@ class StepController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
+    public function create():Response
+    {   
+        //get the last recipe created
+        $user_id = Auth::user()->id;
+        $createdRecipe = Recipe::where('user_id',$user_id)->orderBy('id', 'desc')->first();
+        return Inertia::render('Step/Create',[
+            'recipe'=> $createdRecipe,
+        ]);
     }
 
     /**

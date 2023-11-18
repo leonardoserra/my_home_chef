@@ -3,7 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import {  Head } from '@inertiajs/vue3';
 import { Link } from '@inertiajs/vue3';
-import Card from '@/Components/Card.vue';
+import RecipeCard from '@/Components/RecipeCard.vue';
 
 
 defineProps([
@@ -17,8 +17,8 @@ defineProps([
 <template>
     <Head title="Ricette" />
     <AuthenticatedLayout class="relative">
-        <div class="fixed top-12 left-6 action-container">
-            <Link  :href="route('recipes.create')" :active="route().current('recipes.create')">
+        <div class="fixed z-50 top-12 left-8 action-container">
+            <Link  :href="route('recipe.create')" :active="route().current('recipe.create')">
                 <PrimaryButton class="mt-4 mb-3">
                     Aggiungi Ricetta
                 </PrimaryButton>
@@ -29,13 +29,13 @@ defineProps([
             <div class="overflow-hidden bg-white shadow-sm container-card sm:rounded-lg">
                 <template v-if="recipes">
                     <template v-for="(recipe, index) in recipes" :key="index">
-                        <Card 
+                        <RecipeCard 
                         :recipe="recipe"
                         :difficulty="difficulties.find(difficulty => difficulty.id == recipe.difficulty_id)"
                         :mealType="mealTypes.find(mealType => mealType.id == recipe.meal_type_id)"
                         :cuisine="cuisines.find(cuisine => cuisine.id == recipe.cuisine_id)"
                         >
-                        </Card>
+                        </RecipeCard>
                     </template>
                    
                 </template>

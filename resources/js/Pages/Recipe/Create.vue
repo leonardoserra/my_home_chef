@@ -6,23 +6,21 @@ import { useForm, Head} from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 
-    const errors = ref({
-        name:'Nome obbligatorio',
-        description: 'La descrizione supera i 100 caratteri, scrivi una breve descrizione',
-        image_path: "Non è un percorso valido per l'immagine, non puoi superari i 255 caratteri",
-        duration: 'Durata ricetta obbligatoria',
-        difficulty_id: 'Inserisci un livello di difficoltà valido',
-        meal_type_id: 'Inserisci un tipo di pietanza valido',
-        cuisine_id: 'Inserisci un tipo di cucina valido',
-    })
+const errors = ref({
+    name:'Nome obbligatorio',
+    description: 'La descrizione supera i 100 caratteri, scrivi una breve descrizione',
+    image_path: "Non è un percorso valido per l'immagine, non puoi superari i 255 caratteri",
+    duration: 'Durata ricetta obbligatoria',
+    difficulty_id: 'Inserisci un livello di difficoltà valido',
+    meal_type_id: 'Inserisci un tipo di pietanza valido',
+    cuisine_id: 'Inserisci un tipo di cucina valido',
+})
 
-    defineProps([
-        'difficulties',
-        'mealTypes',
-        'cuisines',
-    ]);
-
-
+defineProps([
+    'difficulties',
+    'mealTypes',
+    'cuisines',
+]);
 
 const form = useForm({
     name: '',
@@ -36,12 +34,12 @@ const form = useForm({
 </script>
  
 <template>
-    <Head title="Ricette" />
+    <Head title="Nuova Ricetta" />
     
     <AuthenticatedLayout>
         <div class="max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
             
-            <form class="p-4 overflow-hidden bg-white shadow-sm sm:rounded-lg" @submit.prevent="form.post(route('recipes.store'), { onSuccess: () => form.reset() })">
+            <form class="p-4 overflow-hidden bg-white shadow-sm sm:rounded-lg" @submit.prevent="form.post(route('recipe.store'), { onSuccess: () => form.reset() })">
                 <InputError :message="form.errors.name?errors.name:''" class="mt-2" />
                 <input 
                     type="text" 
@@ -101,7 +99,6 @@ const form = useForm({
                     </template>
                 </select>
                 <div>
-
                     <PrimaryButton class="mt-4 ">Crea Ricetta</PrimaryButton>
                 </div>
             </form>
