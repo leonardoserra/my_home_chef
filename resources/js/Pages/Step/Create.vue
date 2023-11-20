@@ -1,6 +1,6 @@
 
 <script setup>
-import {Head, useForm, usePage} from '@inertiajs/vue3';
+import {Head, useForm, usePage, Link} from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import InputError from '@/Components/InputError.vue';
@@ -115,6 +115,15 @@ function setNewForm(){
                     <PrimaryButton class="mt-4 ">Aggiungi Step</PrimaryButton>
                 </div>
             </form>
+
+            <!-- Complete Button  -->
+            <div class="flex justify-end">
+                <Link  :href="route('recipe.show',{ id: recipe.id})">
+                    <PrimaryButton>
+                        Completa Ricetta
+                    </PrimaryButton>
+                </Link>
+            </div>
         </div>
     </AuthenticatedLayout>
 </template>
