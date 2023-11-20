@@ -6,6 +6,7 @@ use App\Models\Cuisine;
 use App\Models\Difficulty;
 use App\Models\MealType;
 use App\Models\Recipe;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -89,7 +90,11 @@ class RecipeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user_id = Auth::user()->id;
+        $recipe = Recipe::where('user_id',$user_id)->where('id',$id)->with('steps')->first();
+        return Inertia::render('Recipe/Show',[
+            'recipe' => $recipe,
+        ]);
     }
 
     /**

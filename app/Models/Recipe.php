@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -31,7 +30,7 @@ class Recipe extends Model
     }
 
     public function steps():HasMany{
-        return $this->hasMany(Steps::class);
+        return $this->hasMany(Step::class);
     }
 
     public function user():BelongsTo{
