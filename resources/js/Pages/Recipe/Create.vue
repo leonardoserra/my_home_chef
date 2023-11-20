@@ -6,15 +6,6 @@ import { useForm, Head} from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 
-const errors = ref({
-    name:'Nome obbligatorio',
-    description: 'La descrizione supera i 100 caratteri, scrivi una breve descrizione',
-    image_path: "Non è un percorso valido per l'immagine, non puoi superari i 255 caratteri",
-    duration: 'Durata ricetta obbligatoria',
-    difficulty_id: 'Inserisci un livello di difficoltà valido',
-    meal_type_id: 'Inserisci un tipo di pietanza valido',
-    cuisine_id: 'Inserisci un tipo di cucina valido',
-})
 
 defineProps([
     'difficulties',
@@ -30,6 +21,16 @@ const form = useForm({
     difficulty_id: null,
     meal_type_id: null,
     cuisine_id: null,
+});
+
+const errors = ref({
+    name:'Nome obbligatorio',
+    description: 'La descrizione supera i 100 caratteri, scrivi una breve descrizione',
+    image_path: "Non è un percorso valido per l'immagine, non puoi superari i 255 caratteri",
+    duration: 'Durata ricetta obbligatoria',
+    difficulty_id: 'Inserisci un livello di difficoltà valido',
+    meal_type_id: 'Inserisci un tipo di pietanza valido',
+    cuisine_id: 'Inserisci un tipo di cucina valido',
 });
 </script>
  

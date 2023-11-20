@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActionType;
 use App\Models\Recipe;
 use App\Models\Step;
 use Illuminate\Http\Request;
@@ -27,8 +28,17 @@ class StepController extends Controller
         //get the last recipe created
         $user_id = Auth::user()->id;
         $createdRecipe = Recipe::where('user_id',$user_id)->orderBy('id', 'desc')->first();
+        $steps = Step::where('recipe_id', $createdRecipe->id)->get();
+        if(count($steps) == 0){
+            $steps = [
+                'message' => 'Ancora essun passaggio er questa Ricetta, aggiungi il primo!',
+            ];
+        }
+        $actionTypes = ActionType::all();
         return Inertia::render('Step/Create',[
             'recipe'=> $createdRecipe,
+            'steps'=> $steps,
+            'actionTypes' => $actionTypes,
         ]);
     }
 

@@ -31,10 +31,10 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('recipe', RecipeController::class)
+Route::resource('/recipe', RecipeController::class)
     ->middleware(['auth']);
     
-Route::resource('step', StepController::class)
+Route::resource('/step', StepController::class)
     ->middleware(['auth']);
 
 
