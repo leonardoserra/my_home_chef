@@ -29,11 +29,7 @@ class StepController extends Controller
         $user_id = Auth::user()->id;
         $createdRecipe = Recipe::where('user_id',$user_id)->orderBy('id', 'desc')->first();
         $steps = Step::where('recipe_id', $createdRecipe->id)->get();
-        if(count($steps) == 0){
-            $steps = [
-                'message' => 'Ancora essun passaggio er questa Ricetta, aggiungi il primo!',
-            ];
-        }
+      
         $actionTypes = ActionType::all();
         return Inertia::render('Step/Create',[
             'recipe'=> $createdRecipe,
@@ -47,7 +43,15 @@ class StepController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'step_number' => 'required|integer|numeric',
+            'description' => 'required|max:800|string',
+            'action_type_id' => 'nullable|integer|numeric',
+            'recipe_id'=> 'required|integer|numeric',
+        ]);
+        
+        Step::create($validated);
+        return to_route('step.create');
     }
 
     /**
