@@ -1,4 +1,8 @@
 <script setup>
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import { Link } from '@inertiajs/vue3';
+
+
     defineProps([
         'recipe',
         'difficulty',
@@ -8,6 +12,7 @@
 </script>
 
 <template>
+  
     <div class="recipe-card">
         <div class="image-wrapper">
             <img class="image" :src="recipe.image_path " alt="">
@@ -32,8 +37,11 @@
         <div class="cuisine">
             Cucina: {{ cuisine ? cuisine.name : 'nessuna cucina selezionata' }}
         </div>
+        <PrimaryButton>
+            <Link :href="route('recipe.show',{ id: recipe.id})">DETTAGLI</Link>
+        </PrimaryButton>
     </div>
-   
+    
 </template>
 <style scoped lang="scss">
     .recipe-card{
