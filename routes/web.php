@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\DifficultyController;
 use App\Http\Controllers\StepController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +33,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('/recipe', RecipeController::class)
-    ->middleware(['auth']);
+    ->middleware(['auth'])->parameters([
+        'recipe'=>'recipe:id',
+    ]);
     
 Route::resource('/step', StepController::class)
     ->middleware(['auth']);
