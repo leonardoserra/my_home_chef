@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActionType;
 use App\Models\Cuisine;
 use App\Models\Difficulty;
 use App\Models\MealType;
@@ -92,8 +93,10 @@ class RecipeController extends Controller
     {
         $user_id = Auth::user()->id;
         $recipe = Recipe::where('user_id',$user_id)->where('id',$id)->with('steps')->first();
+        $actionTypes = ActionType::all();
         return Inertia::render('Recipe/Show',[
             'recipe' => $recipe,
+            'actionTypes'=> $actionTypes,
         ]);
     }
 
