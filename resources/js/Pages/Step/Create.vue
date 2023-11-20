@@ -48,15 +48,15 @@ function setNewForm(){
 <template>
     <Head title="Passaggi della Ricetta" />
     <AuthenticatedLayout>
+        <!-- debug -->
         <!-- {{ recipe }} -->
-        <div v-if="form">
+        <!-- <div v-if="form">
             next form step_number: {{ form.step_number }}
             <br/>
             initialStepsLenght: {{ initialStepsLength }}
             <br>
             added {{ addedSteps }}
-
-         </div>
+         </div> -->
         <div id="info-form-container" class="w-4/5 p-4 m-auto overflow-hidden bg-white shadow-sm recipe-info sm:rounded-lg">
 
             <div class="mb-5">
@@ -94,12 +94,7 @@ function setNewForm(){
                 Passaggio Numero {{ steps.length + 1}}
             </div>
             <form @submit.prevent="form.post(route('step.store'),  { onSuccess: () =>  setNewForm() })">
-                <InputError :message="form.errors.step_number?errors.step_number:''" class="mt-2" />
-                <input 
-                    type="hidden" 
-                    v-model="form.step_number"
-                    class="block w-full mb-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                >
+             
                 <!-- Action Type -->
                 <select v-model="form.action_type_id" class="inline-block w-64 mb-2 border-gray-300 rounded-md shadow-sm me-5 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" >
                     <option :value=null>Scegli Azione</option>
