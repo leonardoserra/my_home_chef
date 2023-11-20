@@ -37,9 +37,12 @@ import { Link } from '@inertiajs/vue3';
         <div class="cuisine">
             Cucina: {{ cuisine ? cuisine.name : 'nessuna cucina selezionata' }}
         </div>
-        <PrimaryButton>
-            <Link :href="route('recipe.show',{ id: recipe.id})">DETTAGLI</Link>
-        </PrimaryButton>
+        <!-- Details Button  -->
+        <Link :href="route('recipe.show',{ id: recipe.id})">
+            <PrimaryButton>
+                DETTAGLI
+            </PrimaryButton>
+        </Link>
     </div>
     
 </template>
