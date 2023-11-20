@@ -26,7 +26,6 @@ const form = useForm({
 });
 
 const errors = ref({
-    step_number: `Errore. Debug: lo step number è: ${usePage().props.steps.length}`,
     description: 'Descrizione Obbligatoria',
     action_type_id: 'Seleziona un Azione valida o non mettere niente',
 });
