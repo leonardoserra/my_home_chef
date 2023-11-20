@@ -80,7 +80,8 @@ function setNewForm(){
                <template v-for="(step, index) in steps" :key="index">
                 <div class="block w-full mb-2 border-gray-300 rounded-md shadow-sm focus:border-black-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                     {{ index + 1 }}.
-                    {{ step.action_type_id != null ? actionTypes[step.action_type_id - 1].name:'' }}
+                    <!-- {{ step.action_type_id != null ? actionTypes[step.action_type_id - 1].name:'Passaggio' }} -->
+                    {{ step.action_type_id != null ? actionTypes.filter(actionType => actionType.id == step.action_type_id)[0].name:'Passaggio' }}
                     <p class="ms-4">
                         {{ step.description }}
                     </p>
